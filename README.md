@@ -1,17 +1,18 @@
-# Multi-Model Chatbot with LangChain
+# Multi-Model Chatbot with LangChain and Pinecone
 
-This project is a web-based client for interacting with the Claude 3.5 API, OpenAI API, and an open-source model using Gradio. It allows you to enter text prompts or upload CSV/TXT files to chat with different models, with optional context management to optimize responses.
+This project is a web-based client for interacting with the Claude 3.5 API, OpenAI API, DeepSeek-Coder-V2 model, and Pinecone using Gradio. It allows you to enter text prompts or upload CSV/TXT files to chat with different models, with optional context management and efficient data storage using Pinecone.
 
 ## Features
 
 - Text input for prompts with Claude
 - Text input for prompts with OpenAI (via LangChain)
-- Text input for prompts with an open-source model
+- Text input for prompts with DeepSeek-Coder-V2
 - CSV and TXT file upload for processing file content
 - Context-aware prompts using LangChain
 - Session management to maintain context
 - Responsive web interface using Gradio
 - Ability to switch between different models
+- Efficient data storage and retrieval using Pinecone
 
 ## Setup Instructions
 
@@ -42,12 +43,15 @@ This project is a web-based client for interacting with the Claude 3.5 API, Open
    pip install -r requirements.txt
    ```
 
-4. Create a `.env` file in the root directory and add your API keys and the URL for the open-source model:
+4. Create a `.env` file in the root directory and add your API keys and the URL for the DeepSeek-Coder-V2 model:
 
    ```bash
    echo "CLAUDE_API_KEY=your_claude_api_key
    OPENAI_API_KEY=your_openai_api_key
-   OPEN_SOURCE_MODEL_API_URL=https://your_open_source_model_api_url" > .env
+   DEEPSEEK_API_URL=https://api.deepseek-ai.com/v2/completions
+   DEEPSEEK_API_KEY=your_deepseek_api_key
+   PINECONE_API_KEY=your_pinecone_api_key
+   PINECONE_ENVIRONMENT=your_pinecone_environment" > .env
    ```
 
 ### Running the Application
@@ -64,7 +68,7 @@ Open your web browser and navigate to `http://localhost:8080`.
 
 - **Text Input with Claude:** Enter a prompt and optional context. The context will be used to provide more accurate responses from Claude.
 - **Text Input with OpenAI:** Enter a prompt and optional context. The context will be used to provide more accurate responses from OpenAI via LangChain.
-- **Text Input with OpenSource:** Enter a prompt and optional context. The context will be used to provide more accurate responses from the open-source model.
+- **Text Input with DeepSeek:** Enter a prompt and optional context. The context will be used to provide more accurate responses from DeepSeek-Coder-V2.
 - **File Upload:** Upload a CSV or TXT file and optionally provide context. The content of the file and context will be used to generate a response from the chosen model.
 
 ### Example
@@ -84,4 +88,12 @@ Open your web browser and navigate to `http://localhost:8080`.
    - Prompt: "What is the capital of France?"
    - Response: "The capital of France is Paris."
 
+4. **Text Input with DeepSeek:**
+   - Context: "You are an AI assistant."
+   - Prompt: "What is the capital of France?"
+   - Response: "The capital of France is Paris."
+
+## License
+
+This project is licensed under the MIT License.
 
